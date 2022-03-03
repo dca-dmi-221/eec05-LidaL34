@@ -107,9 +107,20 @@ let onVerificationWordB = "querer";
 let onVerificationWordC = "Gomosos";
 let onVerificationWordD = "Somos";
 
-function palindromeVerifier(word) {
-   // :)
+function palindromeVerifier(palabra) {
+    let poliWord = palabra.toLowerCase().split("").reverse().join("");
+    if (poliWord === palabra) {
+        console.log("The Word" + palabra + "is polidrome")
+    } else {
+        console.log("The Word" + palabra + "in not polindrome")
+    }
 }
+
+palindromeVerifier (onVerificationWordA);
+palindromeVerifier (onVerificationWordB);
+palindromeVerifier (onVerificationWordC);
+palindromeVerifier (onVerificationWordD);
+
 
 
 /*Dado un objeto que contiene una lista de palabras contar el
