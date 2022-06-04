@@ -4,8 +4,23 @@
 
 let testWord = "esternocleidomastoideo";
 function wordCutter(word) {
-   // :)
-}
+    word = word.split("");
+    console.log(word);
+
+    function wordCutter(word) {
+        word = word.split("");
+       console.log(word);
+    
+       let random = word
+           .map(item => ({item, sort: Math.random()}))
+           .sort((a,b) => a.sort - b.sort)
+           .map(({item}) => item)
+       
+       console.log(random)
+    
+       }
+    }
+
 wordCutter(testWord);
 
 /*Dado un string buscar en un listado e indicar si se encuentra o no
@@ -27,8 +42,20 @@ let testWordsList = [
 
 // pruebe para cada palabra A, B y C
 function wordSearcherIgnoreCase(targetWord, wordsList) {
-   // :)
+    let minusList = wordsList.map(element => element.toLowerCase());
+    targetWord= targetWord.toLowerCase();
+    targetWord= normalizeString(targetWord);
+    console.log(minusList)
+    console.log(minusList.some(element => targetWord.toLowerCase() === element ))
 }
+
+function normalizeString (targetWord) {
+    return targetWord = targetWord.normalize ("NFD").replace(/[\u0300-\u036f]/g,"");
+}
+wordSearcherIgnoreCase(testTargetWordA,testWordsList);
+wordSearcherIgnoreCase(testTargetWordB,testWordsList);
+wordSearcherIgnoreCase(testTargetWordC,testWordsList);
+
 
 
 
@@ -49,8 +76,28 @@ let testSampleList = [
 ];
 
 function wordLengthClassifier(wordsList) {
-    // :)
+    let totalLetters = 0;
+    wordsList.forEach(word => totalLetters += word.length);
+    const averageSize = totalLetters / wordsList.length;
+
+    const sortedWords = wordsList.sort((a, b) => {
+        if(a.length < b.length) {
+            return -1;
+        } else if(a.length > b.length) {
+            return 1;
+        } else {
+            return 0;
+        }
+    })
+
+    return {
+        averageSize,
+        shortest: sortedWords[0],
+        longest: sortedWords[sortedWords.length - 1],
+    }
+
 }
+console.log(wordLengthClassifier(testSampleList))
 
 
 /*Dado un string retorna si este es o no un palíndromo. No debe diferenciar entre mayúsculas y minúsculas*/
@@ -60,9 +107,20 @@ let onVerificationWordB = "querer";
 let onVerificationWordC = "Gomosos";
 let onVerificationWordD = "Somos";
 
-function palindromeVerifier(word) {
-   // :)
+function palindromeVerifier(palabra) {
+    let poliWord = palabra.toLowerCase().split("").reverse().join("");
+    if (poliWord === palabra) {
+        console.log("The Word" + palabra + "is polidrome")
+    } else {
+        console.log("The Word" + palabra + "in not polindrome")
+    }
 }
+
+palindromeVerifier (onVerificationWordA);
+palindromeVerifier (onVerificationWordB);
+palindromeVerifier (onVerificationWordC);
+palindromeVerifier (onVerificationWordD);
+
 
 
 /*Dado un objeto que contiene una lista de palabras contar el
@@ -91,8 +149,19 @@ let testWordToExplore = "amar";
 let wordsToVerify = ["amar", "arma", "rana" , "mara", "rama", "roma", "amor", "ramon", "omar"];
 
 function anagramVerifier(wordToExplore, listOfWords) {
-   // :)
+   let posicionesAnagrama = []
+   listOfWords.forEach((word,num) => {
+      const palabraArrayOrdenada = word.split("").sort().join("")
+      const palabraMetodoOrdenada = wordToExplore.split("").sort().join("")
+
+      if(palabraArrayOrdenada == palabraMetodoOrdenada) {
+          posicionesAnagrama.push(num)
+      }
+    })
+    return posicionesAnagrama
 }
+
+console.log (anagramVerifier(testWordToExplore, wordsToVerify));
 
 /*Dado un objeto que contiene 2 arreglos, retornar un objeto con 1
 arreglo que contiene las palabras sin vocales.*/
@@ -126,5 +195,6 @@ let testListA = ["amor", "sabor", "calor","firma", "mara"];
 let testListB = ["roma", "robar", "portar", "arma", "mora"];
 
 function doubleListVerifier(listA, listB) {
-    // :)
-}
+
+ }
+
